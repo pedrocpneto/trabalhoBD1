@@ -6,3 +6,8 @@
 	tipo INTEGER,
 	tipoArmazenamento VARCHAR(10),
 	precoCusto	DECIMAL(18,2) );
+
+CREATE TABLE ComercializacaoDireta (
+	codigoProduto INTEGER PRIMARY KEY,
+	CONSTRAINT FK_ComercializacaoDireta_Produto FOREIGN KEY (codigoProduto)
+		REFERENCES Produto (codigo));
