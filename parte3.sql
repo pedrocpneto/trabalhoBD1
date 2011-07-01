@@ -5,14 +5,16 @@
 	nome VARCHAR(30),
 	tipo INTEGER,
 	tipoArmazenamento VARCHAR(10),
-	precoCusto	DECIMAL(10,2) );
+	precoCusto	DECIMAL(10,2) 
+);
 
 CREATE TABLE ComercializacaoDireta (
 	codigoProduto INTEGER PRIMARY KEY,
 	CONSTRAINT FK_ComercializacaoDireta_Produto FOREIGN KEY (codigoProduto)
 		REFERENCES Produto (codigo)
 		ON UPDATE CASCADE
-		ON DELETE RESTRICT);
+		ON DELETE RESTRICT
+);
 
 CREATE TABLE Prato (
 	codigoProduto INTEGER PRIMARY KEY,
@@ -21,8 +23,9 @@ CREATE TABLE Prato (
 	CONSTRAINT FK_Prato_ComercializacaoDireta FOREIGN KEY (codigoProduto)
 		REFERENCES ComercializacaoDireta (codigoProduto)
 		ON UPDATE CASCADE,
-		ON DELETE RESTRICT );
-		
+		ON DELETE RESTRICT 
+);
+	
 CREATE TABLE Preparo (
 	codigo INTEGER PRIMARY KEY,
 	descricao VARCHAR(200),
@@ -33,4 +36,6 @@ CREATE TABLE Preparo (
 	CONSTRAINT FK_Preparo_Prato FOREIGN KEY (codigoProduto)
 		REFERENCES Prato (codigoProduto)
 		ON UPDATE CASCADE,
-		ON DELETE RESTRICT );
+		ON DELETE RESTRICT 
+);
+
