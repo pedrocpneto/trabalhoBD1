@@ -39,19 +39,17 @@ CREATE TABLE Preparo (
 		ON DELETE RESTRICT 
 );
 
-CREATE TABLE clube (
+CREATE TABLE Clube (
 	codigo INTEGER PRIMARY KEY,
 	nome VARCHAR(20),
 	desconto DECIMAL(10,2)
 );
 
-
-CREATE TABLE mesa (
+CREATE TABLE Mesa (
 	codigo INTEGER PRIMARY KEY,
 	nome VARCHAR(15)	
 );
 
-CREATE TABLE comanda (
-	codigo INTEGER PRIMARY KEY,
-         ON UPDATE CASCADE
+CREATE TABLE Comanda (
+	codigo INTEGER PRIMARY KEY
 );
