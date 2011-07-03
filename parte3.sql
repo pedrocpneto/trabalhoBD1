@@ -112,7 +112,6 @@ CREATE TABLE Listado (
         CONSTRAINT PRIMARY KEY(codigoProduto, codigoComanda)
 );
 
-<<<<<<< HEAD
 CREATE TABLE Consumacao (
 	codigoCliente INTEGER,
 	codigoComanda INTEGER,
