@@ -80,6 +80,22 @@ CREATE TABLE Bebida (
 	classificacao varchar(10),
         CONSTRAINT FK_bebida_produto FOREIGN KEY (codigoBebida) 
                REFERENCES ComercializacaoDireta (codigoProduto)
-               ON UPDATE CASCADE,
-               ON DELETE RESTRICT	 
-)
+               ON UPDATE CASCADE
+               ON DELETE RESTRICT
+);
+
+CREATE TABLE Listado (
+        codigoProduto INTEGER PRIMARY KEY,
+	codigoComanda INTEGER PRIMARY KEY,
+	CONSTRAINT FK_produto FOREIGN KEY (codigoProduto) 
+	       REFERENCES Produto(codigo)
+		 ON UPDATE CASCADE
+		 ON DELETE RESTRICT,
+	CONSTRAINT FK_comanda foreign key(codigoComanda) 
+		REFERENCES Comanda(codigo)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT,
+        CONSTRAINT PRIMARY KEY(codigoProduto, codigoComanda)
+);
+
+
