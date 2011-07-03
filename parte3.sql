@@ -140,3 +140,19 @@ CREATE TABLE Telefone (
 		ON UPDATE CASCADE
 		ON DELETE RESTRICT
 );
+
+CREATE TABLE Cardapio (
+	codigoCardapio INTEGER PRIMARY KEY,
+	descricao VARCHAR(50) NOT NULL,
+);
+
+CREATE TABLE ListaProdCardapio (
+	codigoCardapio INTEGER,
+	codigoProduto INTEGER,
+	CONSTRAINT PK_ListaProdCardapio PRIMARY KEY 
+		(codigoCardapio, codigoProduto),
+	CONSTRAINT FK_ListaProdCardapio_Cardapio FOREIGN KEY (codigoCardapio)
+		REFERENCES Cardapio (codigoCardapio),
+	CONSTRAINT FK_ListaProdCardapio_Produto PRIMARY KEY (codigoProduto)
+		REFERENCES Produto (codigoProduto)
+);
