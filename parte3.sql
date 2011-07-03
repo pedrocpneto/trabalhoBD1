@@ -36,7 +36,7 @@ CREATE TABLE Preparo (
 	CONSTRAINT FK_Preparo_Prato FOREIGN KEY (codigoProduto)
 		REFERENCES Prato (codigoProduto)
 		ON UPDATE CASCADE
-		ON DELETE RESTRICT 
+		ON DELETE RESTRICT git pull https://github.com/arturcampos/trabalhoBD1.git patch-4
 );
 
 CREATE TABLE Clube (
@@ -152,7 +152,26 @@ CREATE TABLE ListaProdCardapio (
 	CONSTRAINT PK_ListaProdCardapio PRIMARY KEY 
 		(codigoCardapio, codigoProduto),
 	CONSTRAINT FK_ListaProdCardapio_Cardapio FOREIGN KEY (codigoCardapio)
-		REFERENCES Cardapio (codigoCardapio),
+		REFERENCES Cardapio (codigoCardapio)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT,
 	CONSTRAINT FK_ListaProdCardapio_Produto PRIMARY KEY (codigoProduto)
 		REFERENCES Produto (codigoProduto)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+);
+
+CREATE TABLE Ingredientes (
+	codigoProdutoPrato INTEGER,
+	codigoProdutoMateriaPrima INTEGER,
+	quantidade DECIMAL(10,2)
+	CONSTRAINT PK_Ingredientes PRIMARY KEY (codigoProdutoPrato, codigoProdutoMateriaPrima),
+	CONSTRAINT FK_Ingredientes_Prato FOREIGN KEY (codigoProdutoPrato)
+		REFERENCES Prato(codigoProduto)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT,
+	CONSTRAINT FK_Ingredientes_MateriaPrima FOREIGN KEY (codigoProdutoMateriaPrima)
+		REFERENCES MateriaPrima(codigoProduto)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
 );
