@@ -75,3 +75,11 @@ CREATE TABLE Lote (
 		ON DELETE RESTRICT
 );
 
+CREATE TABLE Bebida (
+	codigoBebida INTEGER PRIMARY KEY, 
+	classificacao varchar(10),
+        CONSTRAINT FK_bebida_produto FOREIGN KEY (codigoBebida) 
+               REFERENCES ComercializacaoDireta (codigoProduto)
+               ON UPDATE CASCADE,
+               ON DELETE RESTRICT	 
+)
