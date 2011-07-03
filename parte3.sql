@@ -22,7 +22,7 @@ CREATE TABLE Prato (
 	nome VARCHAR(60),
 	CONSTRAINT FK_Prato_ComercializacaoDireta FOREIGN KEY (codigoProduto)
 		REFERENCES ComercializacaoDireta (codigoProduto)
-		ON UPDATE CASCADE,
+		ON UPDATE CASCADE
 		ON DELETE RESTRICT 
 );
 	
@@ -35,7 +35,7 @@ CREATE TABLE Preparo (
 	tempoCozimento TIME,
 	CONSTRAINT FK_Preparo_Prato FOREIGN KEY (codigoProduto)
 		REFERENCES Prato (codigoProduto)
-		ON UPDATE CASCADE,
+		ON UPDATE CASCADE
 		ON DELETE RESTRICT 
 );
 
@@ -53,3 +53,25 @@ CREATE TABLE Mesa (
 CREATE TABLE Comanda (
 	codigo INTEGER PRIMARY KEY
 );
+
+CREATE TABLE MateriaPrima (
+	codigoProduto INTEGER PRIMARY KEY,
+	unidadeMedida CHAR(10) NOT NULL,
+	CONSTRAINT FK_MateriaPrima_Produto FOREIGN KEY (codigoProduto)
+		REFERENCES Produto(codigo)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+);
+
+CREATE TABLE Lote (
+	codigoLote INTEGER PRIMARY KEY,
+	dataValidade DATE,
+	dataFabricacao DATE,
+	fornecedor VARCHAR(60),
+	codigoProduto INTEGER,
+	CONSTRAINT FK_Lote_Produto FOREIGN KEY (codigoProduto)
+		REFERENCES Produto(codigo)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+);
+
