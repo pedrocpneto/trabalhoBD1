@@ -111,3 +111,23 @@ CREATE TABLE Listado (
 		ON DELETE RESTRICT,
         CONSTRAINT PRIMARY KEY(codigoProduto, codigoComanda)
 );
+
+CREATE TABLE Consumacao (
+	codigoCliente INTEGER,
+	codigoComanda INTEGER,
+	codigoMesa INTEGER,
+	dataConsumacao DATE NOT NULL,
+	CONSTRAINT FK_cliente FOREIGN KEY (codigoCliente) 
+		REFERENCES Cliente(cpf)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT,
+	CONSTRAINT FK_comanda FOREIGN KEY (codigoComanda) 
+		REFERENCES Comanda(codigo)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT,
+	CONSTRAINT FK_mesa FOREIGN KEY (codigoMesa)
+		REFERENCES Mesa(codigo)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT,
+	CONSTRAINT PRIMARY KEY (codigoCliente, codigoComanda, codigoMesa)
+);
