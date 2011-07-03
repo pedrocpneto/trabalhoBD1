@@ -77,9 +77,23 @@ CREATE TABLE Lote (
 
 CREATE TABLE Bebida (
 	codigoBebida INTEGER PRIMARY KEY, 
-	classificacao varchar(10),
+	classificacao VARCHAR(10),
         CONSTRAINT FK_bebida_produto FOREIGN KEY (codigoBebida) 
                REFERENCES ComercializacaoDireta (codigoProduto)
-               ON UPDATE CASCADE,
+               ON UPDATE CASCADE
                ON DELETE RESTRICT	 
-)
+);
+
+CREATE TABLE Cliente (
+	cpf	CHAR(11) PRIMARY KEY,
+	dataCadastro DATE,
+	descricao VARCHAR(80),
+	nome VARCHAR(60) NOT NULL,
+	dataNasc DATE,
+	codigoProdutoClube INTEGER,
+	codigoClube INTEGER
+	CONSTRAINT FK_Cliente_Pertencem FOREIGN_KEY (codigoProdutoClube, codigoClube)
+		REFERENCES Pertencem (codigoProduto, codigoClube)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+);
