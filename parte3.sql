@@ -1,3 +1,6 @@
+ -- Alunos Pedro Clemente Pereira Neto - 99618
+ --		   Artur Campos Rodrigues - 99580
+ 
  CREATE TABLE Produto (
 	codigo INTEGER PRIMARY KEY,
 	clube VARCHAR(30),
