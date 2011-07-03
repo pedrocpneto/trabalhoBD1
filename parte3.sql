@@ -99,8 +99,8 @@ CREATE TABLE Cliente (
 );
 
 CREATE TABLE Listado (
-        codigoProduto INTEGER PRIMARY KEY,
-	codigoComanda INTEGER PRIMARY KEY,
+        codigoProduto INTEGER,
+	codigoComanda INTEGER,
 	CONSTRAINT FK_produto FOREIGN KEY (codigoProduto) 
 	       REFERENCES Produto(codigo)
 		 ON UPDATE CASCADE
@@ -112,6 +112,7 @@ CREATE TABLE Listado (
         CONSTRAINT PRIMARY KEY(codigoProduto, codigoComanda)
 );
 
+<<<<<<< HEAD
 CREATE TABLE Consumacao (
 	codigoCliente INTEGER,
 	codigoComanda INTEGER,
@@ -130,4 +131,13 @@ CREATE TABLE Consumacao (
 		ON UPDATE CASCADE
 		ON DELETE RESTRICT,
 	CONSTRAINT PRIMARY KEY (codigoCliente, codigoComanda, codigoMesa)
+);
+
+CREATE TABLE Telefone (
+	codigoCliente INTEGER PRIMARY KEY,
+	numeroTelefone VARCHAR(15) NOT NULL,
+	CONSTRAINT FK_cliente FOREIGN KEY (codigoCliente) 
+		REFERENCES cliente(cpf)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
 );
