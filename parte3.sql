@@ -97,3 +97,17 @@ CREATE TABLE Cliente (
 		ON UPDATE CASCADE
 		ON DELETE RESTRICT
 );
+
+CREATE TABLE Listado (
+        codigoProduto INTEGER PRIMARY KEY,
+	codigoComanda INTEGER PRIMARY KEY,
+	CONSTRAINT FK_produto FOREIGN KEY (codigoProduto) 
+	       REFERENCES Produto(codigo)
+		 ON UPDATE CASCADE
+		 ON DELETE RESTRICT,
+	CONSTRAINT FK_comanda foreign key(codigoComanda) 
+		REFERENCES Comanda(codigo)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT,
+        CONSTRAINT PRIMARY KEY(codigoProduto, codigoComanda)
+);
